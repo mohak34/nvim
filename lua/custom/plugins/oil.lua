@@ -6,8 +6,8 @@ return {
     opts = {},
     -- Optional: Add a keymap to open oil
     keys = {
-      { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
-      { "\\", "<CMD>Oil<CR>", desc = "Open oil in current directory" },
+      { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+      { '\\', '<CMD>Oil<CR>', desc = 'Open oil in current directory' },
     },
     -- Optional dependencies
     dependencies = {
