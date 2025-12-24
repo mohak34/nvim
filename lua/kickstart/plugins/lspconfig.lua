@@ -62,6 +62,10 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client.name == 'ruff' then
+            client.server_capabilities.hoverProvider = false
+          end
           -- NOTE: Remember that Lua is a real programming language, and as such it is possible
           -- to define small helper and utility functions so you don't have to repeat yourself.
           --
@@ -223,7 +227,8 @@ return {
         -- langs
         clangd = {},
         gopls = {},
-        pyright = {},
+        ruff = {},
+        ty = {},
         rust_analyzer = {},
         jdtls = {},
 
@@ -241,12 +246,9 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua',
         'prettierd',
         'google-java-format',
-        'isort',
-        'black',
-        'flake8',
         'eslint',
         'shellcheck',
         'markdownlint',
