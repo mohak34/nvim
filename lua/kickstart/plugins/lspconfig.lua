@@ -218,6 +218,7 @@ return {
         cssls = {},
         ts_ls = {},
         tailwindcss = {},
+        svelte = {},
         emmet_ls = {},
         jsonls = {},
         yamlls = {},
